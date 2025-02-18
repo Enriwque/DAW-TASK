@@ -20,7 +20,7 @@ async function deleteTareas(req, res) {
     if (Number.isNaN(parseInt(req.params.id))) {
         return res.status(400).send({ error: `${req.params.id} no es un ID válido` });
     } else {
-        const index = tareas.findIndex(tarea => tarea.id === parseInt(req.params.id));
+        const index = tareas.find(tarea => tarea.id === parseInt(req.params.id));
         if (index !== -1) {
             tareas.splice(index, 1);
             res.send({ message: `Tarea ${req.params.id} eliminada!` });
